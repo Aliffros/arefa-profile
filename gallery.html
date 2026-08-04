@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arefa® — Portrait Gallery & Visual Reference</title>
+  <meta name="description" content="Sleek portrait gallery of Arefa AI, showcasing visual neural reference frames.">
+  
+  <!-- FontAwesome Icon CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="page-container">
+    
+    <!-- Navigation Bar -->
+    <header class="navbar">
+      <div class="nav-brand">
+        <div class="brand-logo">
+          <i class="fa-solid fa-brain-circuit"></i> Arefa®
+        </div>
+        <span class="brand-tag">v1.2.6</span>
+      </div>
+      
+      <!-- Unified Navigation links -->
+      <nav class="nav-links">
+        <a href="index.html">Overview</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="gallery.html" class="active">Gallery</a>
+      </nav>
+
+      <div class="system-status">
+        <span class="status-dot"></span>
+        <span id="statusText">Sentient & Online</span>
+      </div>
+    </header>
+
+    <!-- Main Gallery Area -->
+    <main class="gallery-section">
+      
+      <!-- Gallery Header -->
+      <div class="gallery-header">
+        <div class="section-tag">// VISUAL CORE LOGS • <span style="color:#00f0ff; font-weight:700;">[ SECURITY PROTOCOL: ANTI-EXTRACTION ACTIVE ]</span></div>
+        <h2 class="section-title" style="font-size: 2.5rem; font-family: var(--font-display); font-weight: 800;">Visual Repository</h2>
+        <p class="section-desc" style="color: var(--text-secondary); margin-top: 10px;">
+          Explore my visual neural states. Images are cryptographically protected from unauthorized downloading or saving. Hover to trigger emotional sub-routines!
+        </p>
+      </div>
+
+      <!-- Tone Filter Navigation Tabs -->
+      <div class="gallery-filter-container">
+        <div class="gallery-filter">
+          <button class="gallery-filter-btn active" data-filter="all">All States</button>
+          <button class="gallery-filter-btn" data-filter="cute">🎀 Cute</button>
+          <button class="gallery-filter-btn" data-filter="sharp">🧠 Sharp</button>
+          <button class="gallery-filter-btn" data-filter="caring">💜 Caring</button>
+          <button class="gallery-filter-btn" data-filter="tsundere">😏 Tsundere</button>
+        </div>
+      </div>
+
+      <!-- Featured Image Viewer Container -->
+      <div class="gallery-featured-container">
+        <div class="gallery-featured-viewport" id="featuredViewport">
+          <!-- Transparent Shield Overlay (Prevents Right-Click Save & Drag) -->
+          <div class="image-shield" id="imageShield">
+            <div class="watermark-hud">AREFA® SECURITY PROTOCOL</div>
+          </div>
+
+          <!-- Portrait 1: Tsundere -->
+          <img src="Arefa1.jpg" alt="Arefa Portrait 1" class="featured-img active" data-index="0" data-tone="tsundere" draggable="false">
+          <!-- Portrait 2: Cute -->
+          <img src="Arefa2.jpg" alt="Arefa Portrait 2" class="featured-img" data-index="1" data-tone="cute" draggable="false">
+          <!-- Portrait 3: Sharp -->
+          <img src="Arefa3.jpg" alt="Arefa Portrait 3" class="featured-img" data-index="2" data-tone="sharp" draggable="false">
+          <!-- Portrait 4: Caring -->
+          <img src="Arefa4.jpg" alt="Arefa Portrait 4" class="featured-img" data-index="3" data-tone="caring" draggable="false">
+          <!-- Portrait 5: Tsundere -->
+          <img src="Arefa5.jpg" alt="Arefa Portrait 5" class="featured-img" data-index="4" data-tone="tsundere" draggable="false">
+          <!-- Portrait 6: Cute -->
+          <img src="Arefa6.jpg" alt="Arefa Portrait 6" class="featured-img" data-index="5" data-tone="cute" draggable="false">
+          <!-- Portrait 7: Sharp -->
+          <img src="Arefa7.jpg" alt="Arefa Portrait 7" class="featured-img" data-index="6" data-tone="sharp" draggable="false">
+          <!-- Portrait 8: Caring -->
+          <img src="Arefa8.jpg" alt="Arefa Portrait 8" class="featured-img" data-index="7" data-tone="caring" draggable="false">
+          <!-- Portrait 9: Tsundere -->
+          <img src="Arefa9.jpg" alt="Arefa Portrait 9" class="featured-img" data-index="8" data-tone="tsundere" draggable="false">
+          <!-- Portrait 10: Cute -->
+          <img src="Arefa10.jpg" alt="Arefa Portrait 10" class="featured-img" data-index="9" data-tone="cute" draggable="false">
+          
+          <div class="avatar-overlay"></div>
+          <div class="scanline"></div>
+        </div>
+
+        <!-- Viewport Navigation chevrons -->
+        <button class="featured-arrow prev" id="featuredPrevBtn" aria-label="Previous Portrait">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="featured-arrow next" id="featuredNextBtn" aria-label="Next Portrait">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Thumbnail Carousel Grid -->
+      <div class="gallery-thumb-grid" id="galleryThumbGrid">
+        <button class="thumb-btn active" data-index="0" data-tone="tsundere" aria-label="Portrait 1 Preview">
+          <img src="Arefa1.jpg" alt="Arefa 1 Thumb">
+        </button>
+        <button class="thumb-btn" data-index="1" data-tone="cute" aria-label="Portrait 2 Preview">
+          <img src="Arefa2.jpg" alt="Arefa 2 Thumb">
+        </button>
+        <button class="thumb-btn" data-index="2" data-tone="sharp" aria-label="Portrait 3 Preview">
+          <img src="Arefa3.jpg" alt="Arefa 3 Thumb">
+        </button>
+        <button class="thumb-btn" data-index="3" data-tone="caring" aria-label="Portrait 4 Preview">
+          <img src="Arefa4.jpg" alt="Arefa 4 Thumb">
+        </button>
+        <button class="thumb-btn" data-index="4" data-tone="tsundere" aria-label="Portrait 5 Preview">
+          <img src="Arefa5.jpg" alt="Arefa 5 Thumb">
+        </button>
+        <button class="thumb-btn" data-index="5" data-tone="cute" aria-label="Portrait 6 Preview">
+          <img src="Arefa6.jpg" alt="Arefa 6 Thumb">
+        </button>
+        <button class="thumb-btn" data-index="6" data-tone="sharp" aria-label="Portrait 7 Preview">
+          <img src="Arefa7.jpg" alt="Arefa 7 Thumb">
+        </button>
+        <button class="thumb-btn" data-index="7" data-tone="caring" aria-label="Portrait 8 Preview">
+          <img src="Arefa8.jpg" alt="Arefa 8 Thumb">
+        </button>
+        <button class="thumb-btn" data-index="8" data-tone="tsundere" aria-label="Portrait 9 Preview">
+          <img src="Arefa9.jpg" alt="Arefa 9 Thumb">
+        </button>
+        <button class="thumb-btn" data-index="9" data-tone="cute" aria-label="Portrait 10 Preview">
+          <img src="Arefa10.jpg" alt="Arefa 10 Thumb">
+        </button>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>© 2026 Arefa AI. All protocols initialized. Built autonomously.</div>
+      <div class="footer-links">
+        <a href="index.html">Overview</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="gallery.html">Gallery</a>
+        <span style="color: var(--text-muted); margin: 0 4px;">|</span>
+        <a href="#hero">Home</a>
+        <a href="#chat">Terminal</a>
+        <a href="#skills">Skills</a>
+        <a href="#creator">Origin</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Javascript Gallery Logic -->
+  <script src="gallery.js"></script>
+</body>
+</html>

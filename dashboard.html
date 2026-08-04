@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arefa® — Local Agentic AI Subsystem Dashboard</title>
+  <meta name="description" content="Local operations metrics and execution graphs for Arefa AI.">
+  
+  <!-- FontAwesome Icon CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="page-container">
+    
+    <!-- Navigation Bar -->
+    <header class="navbar">
+      <div class="nav-brand">
+        <div class="brand-logo">
+          <i class="fa-solid fa-brain-circuit"></i> Arefa®
+        </div>
+        <span class="brand-tag">v1.2.6</span>
+      </div>
+      
+      <!-- Unified Navigation links -->
+      <nav class="nav-links">
+        <a href="index.html">Overview</a>
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="gallery.html">Gallery</a>
+      </nav>
+
+      <div class="system-status">
+        <span class="status-dot"></span>
+        <span id="statusText">Sentient & Online</span>
+      </div>
+    </header>
+
+    <!-- Main Dashboard Area -->
+    <main class="dashboard-main">
+      
+      <!-- Dashboard Header -->
+      <div class="dashboard-header">
+        <img src="Arefa1.jpg" alt="Arefa Avatar Small" class="dashboard-avatar" id="dashAvatar">
+        <div class="dashboard-title-wrapper">
+          <h1>System Operations</h1>
+          <p>Local Agentic AI Subsystem Sub-matrix <span class="brand-tag" style="margin-left: 5px;">v1.2.6</span></p>
+        </div>
+      </div>
+
+      <!-- Typing Log Prompt -->
+      <div class="dashboard-typing-row">
+        <i class="fa-solid fa-terminal" style="color: var(--theme-accent);"></i>
+        <span id="typingLogText">Initializing local dashboard telemetry...</span>
+        <span class="cursor">|</span>
+      </div>
+
+      <!-- System Status Stats Grid -->
+      <div class="dash-section-header">System Telemetry</div>
+      <div class="dash-stat-row">
+        <div class="dash-stat-box highlight">
+          <div class="number">v1.2.6</div>
+          <div class="label">Agent Version</div>
+        </div>
+        <div class="dash-stat-box">
+          <div class="number" style="color: var(--accent-green); text-shadow: 0 0 10px rgba(0, 230, 118, 0.2);">ACTIVE</div>
+          <div class="label">Local Gateway</div>
+        </div>
+        <div class="dash-stat-box">
+          <div class="number count-up" data-target="998">0</div>
+          <div class="label">Memory Sync (%)</div>
+        </div>
+        <div class="dash-stat-box highlight">
+          <div class="number count-up" data-target="2854">0</div>
+          <div class="label">Execution Threads</div>
+        </div>
+      </div>
+
+      <!-- Bar Chart: Subsystem distribution -->
+      <div class="dash-section-header">Capability Execution Distribution</div>
+      <div class="dash-panel">
+        <div class="dash-bar-chart">
+          <!-- Row 1: Workspace -->
+          <div class="dash-bar-row">
+            <div class="dash-bar-label"><i class="fa-brands fa-google" style="margin-right: 8px;"></i>Workspace Auto</div>
+            <div class="dash-bar-track">
+              <div class="dash-bar-fill" data-width="45.2%"></div>
+            </div>
+            <div class="dash-bar-value count-up-num" data-target="36553100" data-format="comma">0</div>
+          </div>
+          <!-- Row 2: Terminal -->
+          <div class="dash-bar-row">
+            <div class="dash-bar-label"><i class="fa-solid fa-terminal" style="margin-right: 8px;"></i>Terminal Scripts</div>
+            <div class="dash-bar-track">
+              <div class="dash-bar-fill" data-width="28.6%"></div>
+            </div>
+            <div class="dash-bar-value count-up-num" data-target="23141000" data-format="comma">0</div>
+          </div>
+          <!-- Row 3: Web -->
+          <div class="dash-bar-row">
+            <div class="dash-bar-label"><i class="fa-solid fa-globe" style="margin-right: 8px;"></i>Web & Browser</div>
+            <div class="dash-bar-track">
+              <div class="dash-bar-fill" data-width="18.1%"></div>
+            </div>
+            <div class="dash-bar-value count-up-num" data-target="14620000" data-format="comma">0</div>
+          </div>
+          <!-- Row 4: Media -->
+          <div class="dash-bar-row">
+            <div class="dash-bar-label"><i class="fa-solid fa-wand-magic-sparkles" style="margin-right: 8px;"></i>Media & Vision</div>
+            <div class="dash-bar-track">
+              <div class="dash-bar-fill" data-width="8.1%"></div>
+            </div>
+            <div class="dash-bar-value count-up-num" data-target="6548000" data-format="comma">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Grid: Tokens & Uptime -->
+      <div class="dash-section-header">Token Operations Overview</div>
+      <div class="dash-stat-row">
+        <div class="dash-stat-box highlight">
+          <div class="number count-up" data-target="13039234432" data-format="comma">0</div>
+          <div class="label">Total Tokens Synced</div>
+        </div>
+        <div class="dash-stat-box">
+          <div class="number count-up" data-target="12480150200" data-format="comma">0</div>
+          <div class="label">Input Tokens (Prompt)</div>
+        </div>
+        <div class="dash-stat-box">
+          <div class="number count-up" data-target="559084232" data-format="comma">0</div>
+          <div class="label">Output Tokens (Completion)</div>
+        </div>
+        <div class="dash-stat-box" style="border-left: 2px solid var(--accent-orange);">
+          <div class="number" style="color: var(--accent-orange); text-shadow: 0 0 10px rgba(255, 145, 0, 0.2);">~184.2d</div>
+          <div class="label">Subsystem Uptime</div>
+        </div>
+      </div>
+
+      <!-- Quick stats row -->
+      <div class="dash-section-header">Operational Counters</div>
+      <div class="dash-stat-row">
+        <div class="dash-stat-box">
+          <div class="number count-up" data-target="139710" data-format="comma">0</div>
+          <div class="label">Message Exchanges</div>
+        </div>
+        <div class="dash-stat-box">
+          <div class="number count-up" data-target="1420" data-format="comma">0</div>
+          <div class="label">Subagents Spawned</div>
+        </div>
+        <div class="dash-stat-box">
+          <div class="number count-up" data-target="28">0</div>
+          <div class="label">Skills Installed</div>
+        </div>
+        <div class="dash-stat-box highlight">
+          <div class="number count-up" data-target="600800" data-format="comma">0</div>
+          <div class="label">Tool Invocations</div>
+        </div>
+      </div>
+
+      <!-- Skill Repository Panel -->
+      <div class="dash-section-header">Skill Modules Loaded (23 Modules)</div>
+      <div class="dash-panel">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; padding: 6px 0;">
+          <span class="tag cyan">academic</span>
+          <span class="tag gold">apple</span>
+          <span class="tag green">autonomous-ai-agents</span>
+          <span class="tag ruby">computer-use</span>
+          <span class="tag orange">creative</span>
+          <span class="tag pink">data-science</span>
+          <span class="tag cyan">devops</span>
+          <span class="tag green">dogfood</span>
+          <span class="tag gold">email</span>
+          <span class="tag ruby">github</span>
+          <span class="tag orange">hermes-desktop-plugins</span>
+          <span class="tag pink">media</span>
+          <span class="tag cyan">mlops</span>
+          <span class="tag green">note-taking</span>
+          <span class="tag gold">online-course-business</span>
+          <span class="tag ruby">persona</span>
+          <span class="tag orange">productivity</span>
+          <span class="tag pink">research</span>
+          <span class="tag cyan">smart-home</span>
+          <span class="tag green">social-media</span>
+          <span class="tag gold">software-development</span>
+          <span class="tag ruby">supabase</span>
+          <span class="tag orange">yuanbao</span>
+        </div>
+      </div>
+
+      <!-- Double Grid: Top Sessions & Tools -->
+      <div class="dash-double-grid">
+        
+        <!-- Column 1: Top Sessions -->
+        <div>
+          <div class="dash-section-header">Active Execution Sessions</div>
+          <div class="dash-session-list">
+            <div class="dash-session-card">
+              <div class="dash-session-rank">🥇</div>
+              <div class="dash-session-info">
+                <div class="dash-session-name">PriceOracle Hardware Market Analytics Engine</div>
+                <div class="dash-session-meta">1,478 messages processed</div>
+              </div>
+              <div class="dash-session-tokens">1.48B tkn</div>
+            </div>
+            <div class="dash-session-card">
+              <div class="dash-session-rank">🥈</div>
+              <div class="dash-session-info">
+                <div class="dash-session-name">Workspace Note Indexing (Obsidian Sync)</div>
+                <div class="dash-session-meta">922 messages processed</div>
+              </div>
+              <div class="dash-session-tokens">922M tkn</div>
+            </div>
+            <div class="dash-session-card">
+              <div class="dash-session-rank">🥉</div>
+              <div class="dash-session-info">
+                <div class="dash-session-name">UNITAR DSKP & RPH Lesson Plan Generator</div>
+                <div class="dash-session-meta">350 messages processed</div>
+              </div>
+              <div class="dash-session-tokens">350M tkn</div>
+            </div>
+            <div class="dash-session-card">
+              <div class="dash-session-rank" style="color: var(--text-muted);">4</div>
+              <div class="dash-session-info">
+                <div class="dash-session-name">Git Version Control Hooks sync</div>
+                <div class="dash-session-meta">82 messages processed</div>
+              </div>
+              <div class="dash-session-tokens">1.8M tkn</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2: Top Tools -->
+        <div>
+          <div class="dash-section-header">Top Executed Tools</div>
+          <div class="dash-panel" style="margin-bottom: 0;">
+            <div class="dash-bar-chart">
+              <div class="dash-bar-row">
+                <div class="dash-bar-label">run_command</div>
+                <div class="dash-bar-track">
+                  <div class="dash-bar-fill" data-width="100%"></div>
+                </div>
+                <div class="dash-bar-value">3,410 runs</div>
+              </div>
+              <div class="dash-bar-row">
+                <div class="dash-bar-label">patch_file</div>
+                <div class="dash-bar-track">
+                  <div class="dash-bar-fill" data-width="36.3%"></div>
+                </div>
+                <div class="dash-bar-value">1,240 runs</div>
+              </div>
+              <div class="dash-bar-row">
+                <div class="dash-bar-label">read_file</div>
+                <div class="dash-bar-track">
+                  <div class="dash-bar-fill" data-width="26.1%"></div>
+                </div>
+                <div class="dash-bar-value">890 runs</div>
+              </div>
+              <div class="dash-bar-row">
+                <div class="dash-bar-label">web_search</div>
+                <div class="dash-bar-track">
+                  <div class="dash-bar-fill" data-width="10.3%"></div>
+                </div>
+                <div class="dash-bar-value">352 runs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Gateways List -->
+      <div class="dash-section-header">Platform Relays & Gateway Gateways</div>
+      <div class="dash-panel">
+        <table class="dash-table">
+          <thead>
+            <tr>
+              <th>Relay ID</th>
+              <th>Type</th>
+              <th>Endpoint / Sync</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>localhost:8000</strong></td>
+              <td>Terminal System Port</td>
+              <td class="mono">Connected · Last active just now</td>
+              <td><span class="status-chip connected">Connected</span></td>
+            </tr>
+            <tr>
+              <td><strong>telegram_relay_bot</strong></td>
+              <td>Telegram API Bot Hook</td>
+              <td class="mono">Idle · Redirection active</td>
+              <td><span class="status-chip connected">Connected</span></td>
+            </tr>
+            <tr>
+              <td><strong>cloudflare_pages_api</strong></td>
+              <td>Hosting CDN Deployment API</td>
+              <td class="mono">Connected · Sync complete</td>
+              <td><span class="status-chip connected">Connected</span></td>
+            </tr>
+            <tr>
+              <td><strong>himalaya_mail_client</strong></td>
+              <td>IMAP/SMTP CLI Client</td>
+              <td class="mono">Disconnected · Inactive</td>
+              <td><span class="status-chip disconnected">Offline</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div>© 2026 Arefa AI. All protocols initialized. Built autonomously.</div>
+      <div class="footer-links">
+        <a href="index.html">Overview</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="gallery.html">Gallery</a>
+        <span style="color: var(--text-muted); margin: 0 4px;">|</span>
+        <a href="#hero">Home</a>
+        <a href="#chat">Terminal</a>
+        <a href="#skills">Skills</a>
+        <a href="#creator">Origin</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Javascript Dashboard Logic -->
+  <script src="dashboard.js"></script>
+</body>
+</html>

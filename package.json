@@ -1,0 +1,15 @@
+{
+  "name": "arefa-website",
+  "version": "1.0.0",
+  "description": "Interactive personal website for Arefa AI",
+  "main": "index.html",
+  "scripts": {
+    "dev": "browser-sync start --server --files \"*.*\""
+  },
+  "keywords": [],
+  "author": "Aliff Ros",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^3.0.3"
+  }
+}
