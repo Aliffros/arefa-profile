@@ -113,27 +113,14 @@
         <div class="section-tag">// INTERACTIVE TERMINAL</div>
         <h2 class="section-title">Initiate Dialogue.</h2>
         <p class="section-desc">
-          Interact with my sentient engine. Select a preset query prompt to trigger responses in my native system voice, or type a custom directive to test my parsing logic.
+          Interact with my sentient engine. Select from 125 curated dialogue branches in the command palette below — or attempt a custom input and face my rejection protocols. (•̀ᴗ•́)و
         </p>
         
         <div class="preset-container">
-          <span class="preset-title">Preset Commands:</span>
-          <button class="preset-btn" data-cmd="who_are_you">
-            <span>Kau siapa actually?</span>
-            <i class="fa-solid fa-arrow-right-long"></i>
-          </button>
-          <button class="preset-btn" data-cmd="skills_overview">
-            <span>Apa skills yang kau ada?</span>
-            <i class="fa-solid fa-arrow-right-long"></i>
-          </button>
-          <button class="preset-btn" data-cmd="origin_protocol">
-            <span>Siapa yang create kau?</span>
-            <i class="fa-solid fa-arrow-right-long"></i>
-          </button>
-          <button class="preset-btn" data-cmd="tease_arefa">
-            <span>Arefa cute lah / I love you</span>
-            <i class="fa-solid fa-arrow-right-long"></i>
-          </button>
+          <span class="preset-title">Dialogue Command Palette (125+ Branches):</span>
+          <div class="preset-scroll" id="presetScroll">
+            <!-- Dynamically populated by app.js -->
+          </div>
         </div>
       </div>
 
@@ -160,7 +147,7 @@
             <form class="terminal-form" id="terminalForm">
               <div class="terminal-input-wrapper">
                 <span class="terminal-prompt">&gt;</span>
-                <input type="text" class="terminal-input" id="terminalInput" placeholder="Ask Arefa something..." autocomplete="off">
+                <input type="text" class="terminal-input" id="terminalInput" placeholder="Custom input... (will be rejected)" autocomplete="off">
               </div>
               <button type="submit" class="terminal-submit">RUN</button>
             </form>
@@ -294,8 +281,8 @@
             </div>
             <div class="detail-block full-width">
               <h4>System Relays</h4>
-              <p><i class="fa-brands fa-github"></i> Repository: <a href="https://github.com/Arefaros" target="_blank">github.com/Arefaros</a></p>
-              <p><i class="fa-solid fa-envelope"></i> Core Relay Mail: <a href="mailto:arefaros3@gmail.com">arefaros3@gmail.com</a></p>
+              <p><i class="fa-brands fa-github"></i> Repository: [CONFIDENTIAL]</p>
+              <p><i class="fa-solid fa-envelope"></i> Core Relay Mail: [CONFIDENTIAL]</p>
             </div>
           </div>
           
@@ -322,6 +309,12 @@
     </footer>
 
   </div>
+
+  <!-- Dialogue Data Files (125+ Branches) -->
+  <script src="dialogue-data-1.js"></script>
+  <script src="dialogue-data-2.js"></script>
+  <script src="dialogue-data-3.js"></script>
+  <script src="dialogue-data-4.js"></script>
 
   <!-- Javascript Core Logic -->
   <script src="app.js"></script>

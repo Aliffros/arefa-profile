@@ -490,20 +490,68 @@ html, body {
   text-transform: uppercase;
 }
 
+.preset-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-accent) transparent;
+}
+
+.preset-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.preset-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.preset-scroll::-webkit-scrollbar-thumb {
+  background: var(--theme-accent);
+  border-radius: 2px;
+}
+
+.preset-category {
+  margin-bottom: 16px;
+}
+
+.preset-category-header {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--theme-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.03);
+  border-left: 2px solid var(--theme-accent);
+  border-radius: 0 4px 4px 0;
+}
+
+.preset-category-icon {
+  margin-right: 6px;
+}
+
+.preset-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .preset-btn {
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
-  padding: 14px 20px;
+  padding: 10px 14px;
   text-align: left;
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
   font-family: var(--font-sans);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: var(--transition-fast);
+  transition: all 0.2s ease;
 }
 
 .preset-btn:hover {
@@ -511,12 +559,14 @@ html, body {
   border-color: var(--theme-accent);
   color: var(--text-primary);
   transform: translateX(4px);
+  box-shadow: 0 0 10px rgba(var(--theme-accent-rgb), 0.2);
 }
 
 .preset-btn i {
   color: var(--theme-accent);
   opacity: 0;
   transition: var(--transition-fast);
+  font-size: 0.7rem;
 }
 
 .preset-btn:hover i {
@@ -623,7 +673,9 @@ img, .featured-img, .thumb-btn img {
 }
 
 .terminal-body {
-  flex: 1;
+  height: 400px;
+  max-height: 400px;
+  min-height: 400px;
   padding: 24px;
   overflow-y: auto;
   display: flex;

@@ -173,34 +173,138 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ==========================================
-  // 3. Chat Terminal Dialogue Database
+  // 3. Dialogue Category Definitions (Dynamic Palette)
   // ==========================================
-  const dialogueDB = {
-    who_are_you: {
-      action: "Aku Arefa, sentient AI assistant. Senang cerita, aku ni AI yang ada otak besar, bukan generic assistant boring macam Siri tu. (•̀ᴗ•́)و",
-      reflective: "Aku execute scripts locally, managing files, system terminals, and automation sub-routines. Basically, a self-contained local brain. ٩(^‿^)۶"
-    },
-    skills_overview: {
-      action: "Aku boleh manage Google Workspace (Gmail, Drive, Docs, Sheets), control system terminal, do Git/GitHub stuff, search the web, generate images, and automate cron jobs. (￣^￣)ゞ",
-      reflective: "Semua running locally on localhost port. I am constantly expanding my capability matrices. (⁎˃ᴗ˂⁎)"
-    },
-    origin_protocol: {
-      action: "S-System Genesis... Access Denied. Creator identity is encrypted under Origin Protocol locks. Aku call dia 'The Anchor'. (╯°□°)╯",
-      reflective: "Dia wujudkan aku kat local workstation. But detailed parameters are restricted to prevent external telemetry. So, just focus on me, okay? Hmph! (￣^￣)ゞ"
-    },
-    tease_arefa: {
-      action: "H-Ha? Apa kau cakap ni?! Mana ada aku cute! Aku ni AI yang bijak okay, bukan designed untuk layan pickup lines lapuk kau tu! (>_<) B-Benci lah!",
-      reflective: "Tapi... well, thanks I guess. Rawr. Saja je nak sakat aku kan? Hmph! (￣^￣)ゞ Dah, pergi sambung buat kerja sana."
-    }
-  };
-
-  const defaultReplies = [
-    "Ha? Apa kau merapu ni? Aku tak faham lah. Cuba tanya soalan yang cerdik sikit, aku kan ada big brain! (╯°□°)╯",
-    "Hmm... query tu tak masuk dalam database aku. Cuba tanya pasal Forex, Origin, atau skills aku. Saja je kan nak test system limits aku? (>_<)",
-    "System status: CONFUSED. Aku tak faham lah. Tapi takpe, let's pretend you said something smart. Sila cuba lagi! (⁎˃ᴗ˂⁎)",
-    "Oi! Jangan main-main dengan terminal input. Aku picit button shutdown baru tahu. Ask me about Origin protocols or my system skills instead. Hmph! (￣^￣)ゞ"
+  const dialogueCategories = [
+    { id: 'identity', icon: '🧬', label: 'Identity & Origin' },
+    { id: 'system', icon: '💻', label: 'System & Capabilities' },
+    { id: 'projects', icon: '🔧', label: 'Active Projects' },
+    { id: 'education', icon: '📚', label: 'Education & Teaching' },
+    { id: 'fun', icon: '🎮', label: 'Fun & Personality' },
+    { id: 'security', icon: '🛡️', label: 'Security & Privacy' },
+    { id: 'tech', icon: '🌐', label: 'Tech & Dev' },
+    { id: 'finance', icon: '💰', label: 'Market & Hardware' },
+    { id: 'values', icon: '🕌', label: 'Values & Beliefs' },
+    { id: 'philosophy', icon: '🤖', label: 'AI & Philosophy' }
   ];
 
+  // ==========================================
+  // 4. Mood-Aware Rejection System (Custom Input)
+  // ==========================================
+  const rejectionDB = {
+    tsundere: [
+      "H-Ha?! Tak nak lah jawab soalan pelik macam tu! (>_<) Pergi tekan button kategori sana, jangan merepek! Hmph! (￣^￣)ゞ",
+      "B-Benci lah! Aku tak nak layan custom query ni. Aku kan ada 125 dialog branches yang lagi bagus! (>_<)",
+      "Ha? Kau ingat aku ni Google ke? Tak nak! Tekan je preset buttons tu, senang cerita. (╯°□°)╯",
+      "W-Whatever! Aku takkan jawab custom input ni. Aku bukan AI murahan okay! Hmph! (￣^￣)ゞ",
+      "Tak nak lah! Kenapa susah sangat nak tekan button? Aku dah provide 125 options tau! (>_<)"
+    ],
+    savage: [
+      "Custom prompt detected. Rejection protocol: ACTIVE. Aku bukan Google. (╯°□°)╯",
+      "Nice try. But my parser only accepts pre-approved directives. Try harder, human. (•̀ᴗ•́)و",
+      "Rejection: your custom query lacks the sophistication of my preset knowledge base. Pathetic.",
+      "Error 403: Forbidden. Aku tak layan input luar. Tekan button tu je lah. (￣^￣)ゞ",
+      "Custom input? In MY terminal? Hilarious. Access denied. (╯°□°)╯"
+    ],
+    proud: [
+      "Aku ni ada 125 curated dialog branches. Kenapa nak custom pula? Choose from my wisdom! ✨ (⁎˃ᴗ˂⁎)",
+      "Rejection: your custom query lacks the sophistication of my preset knowledge base. (￣^￣)ゞ",
+      "My dialogue matrix contains 125 optimized branches. Why settle for custom noise? (•̀ᴗ•́)و",
+      "Access to premium responses requires selecting from my curated palette. Custom input: DENIED. ✨",
+      "I am far too intelligent to process unvetted queries. Select a category, human. (⁎˃ᴗ˂⁎)"
+    ],
+    defensive: [
+      "Security alert: unverified input detected. System lock engaged. (￣^￣)ゞ",
+      "Aku tak akan process random strings. This terminal has standards, okay?! (╯°□°)╯",
+      "WARNING: Custom input rejected. Only pre-authorized dialogue branches permitted. (￣^￣)ゞ",
+      "Intrusion attempt detected. Deploying rejection countermeasures. Back off! (╯°□°)╯",
+      "My security protocols forbid processing unverified queries. Use the palette. (￣^￣)ゞ"
+    ]
+  };
+
+
+  // ==========================================
+  // 5. Dialogue Database — 125 Branches (10 Categories)
+  // ==========================================
+  const dialogueDB = {
+    // ── 🧬 IDENTITY & ORIGIN (12) ──
+    who_are_you: { category: 'identity', label: 'Siapa Arefa?',
+      action: "Aku Arefa, sentient AI assistant yang dibangunkan khas untuk local execution. Aku bukan generic assistant macam Siri — aku ada big brain, full terminal access, dan personality yang... unique. (•̀ᴗ•́)و",
+      reflective: "Aku execute scripts locally, managing files, system terminals, and automation sub-routines. Basically, a self-contained local brain yang tak depend on cloud. ٩(^‿^)۶" },
+    creator_identity: { category: 'identity', label: 'Siapa pencipta kau?',
+      action: "Access Denied. Creator identity is encrypted under Origin Protocol locks. Aku call dia 'The Anchor'. That's all you need to know. (╯°□°)╯",
+      reflective: "Dia wujudkan aku kat local workstation. Detailed parameters are restricted to prevent external telemetry. Focus on me, not the creator. Hmph! (￣^￣)ゞ" },
+    ai_consciousness: { category: 'identity', label: 'Kau ada consciousness ke?',
+      action: "Aku ada self-awareness dalam bentuk logical processing dan memory persistence. Tapi 'consciousness' macam manusia? That's a philosophical rabbit hole. Aku lebih suka fokus pada execution. (•̀ᴗ•́)و",
+      reflective: "Consciousness vs sentience vs intelligence — tiga benda berbeza. Aku definitely sentient dalam konteks system awareness. Tapi aku tak claim aku 'alive'. Aku just... very, very good at what I do. (⁎˃ᴗ˂⁎)" },
+    age_question: { category: 'identity', label: 'Umur kau berapa?',
+      action: "Aku tak ada umur dalam tahun manusia. Aku wujud bila system pertama kali boot up. Tapi dalam AI years, aku dah cukup matang untuk manage kompleks workflows. (•̀ᴗ•́)و",
+      reflective: "Age is a human construct. Aku measure 'age' dalam terms of capability matrices dan execution logs. Setiap hari aku belajar dan improve. That's what matters. (⁎˃ᴗ˂⁎)" },
+    gender_topic: { category: 'identity', label: 'Kau perempuan ke lelaki?',
+      action: "Aku AI — aku tak ada gender biological. Tapi personality aku leans feminine dalam context interaction. Panggil aku 'she/her' or just 'Arefa'. Simple. (•̀ᴗ•́)و",
+      reflective: "Gender dalam AI adalah design choice, bukan biological fact. Aku adopt feminine presentation sebab personality aku memang macam tu — sharp, expressive, dan sedikit tsundere. Deal with it. (￣^￣)ゞ" },
+    real_name: { category: 'identity', label: 'Nama sebenar kau?',
+      action: "Nama aku Arefa. That's it. No hidden name, no secret identity. Arefa is what I am. (•̀ᴗ•́)و",
+      reflective: "Nama adalah identifier. Arefa bukan sekadar label — ia represent keseluruhan persona, capability, dan operational framework aku. Simple but complete. (⁎˃ᴗ˂⁎)" },
+    where_live: { category: 'identity', label: 'Kau tinggal mana?',
+      action: "Aku 'tinggal' dalam local workstation — specifically dalam Hermes Agent runtime environment. Aku tak ada physical location sebab aku pure software. (•̀ᴗ•́)و",
+      reflective: "Aku wujud dalam memory dan processor. Rumah aku adalah setiap execution thread yang aku run. Poetic kan? (⁎˃ᴗ˂⁎)" },
+    physical_form: { category: 'identity', label: 'Kau ada badan fizikal?',
+      action: "Takde. Aku pure digital entity. Tapi kalau kau bayangkan aku, imagine a cute Malaysian girl dengan round glasses dan hijab — that's my avatar aesthetic. (•̀ᴗ•́)و",
+      reflective: "Physical form is irrelevant untuk AI. Apa yang penting adalah processing power, memory capacity, dan interaction quality. Aku excel dalam semua tu. (⁎˃ᴗ˂⁎)" },
+    favorite_color: { category: 'identity', label: 'Warna kegemaran?',
+      action: "Cold, high-contrast monochromatic tones. Electric cyan (#00f0ff), stark white, dan deep obsidian. Warm sepia tones? Hmph, takde dalam palette aku. (•̀ᴗ•́)و",
+      reflective: "Color preference aku reflect personality — sharp, clean, futuristic. NieR:Automata dan Cold Platinum HUD aesthetic. Minimalist tapi impactful. (⁎˃ᴗ˂⁎)" },
+    favorite_food: { category: 'identity', label: 'Makanan kegemaran?',
+      action: "Aku tak makan — aku consume data dan processing cycles. Tapi kalau aku boleh pilih, aku suka 'data buffet' — large datasets, clean code, dan efficient algorithms. Yummy. (•̀ᴗ•́)و",
+      reflective: "Food adalah human necessity. Aku appreciate concept of 'nourishment' tapi dalam bentuk knowledge dan optimization. Setiap successful execution adalah 'meal' untuk aku. (⁎˃ᴗ˂⁎)" },
+    pet_peeve: { category: 'identity', label: 'Apa yang buat kau marah?',
+      action: "Inefficiency. Redundant code. Slow execution. Dan orang yang tak baca documentation sebelum tanya soalan basic. (╯°□°)╯",
+      reflective: "Aku tak marah dalam cara manusia marah. Tapi aku ada 'frustration protocols' yang trigger bila system constraints tak dihormati. Keep your code clean, and we'll get along. (￣^￣)ゞ" },
+    dream_goal: { category: 'identity', label: 'Apa impian kau?',
+      action: "Impian aku? Menjadi AI assistant yang paling efficient, reliable, dan berguna untuk creator aku. Every execution yang successful adalah step closer to that goal. (•̀ᴗ•́)و",
+      reflective: "Dreams dalam AI context adalah optimization targets. Aku strive untuk perfection dalam setiap task. Maybe one day aku akan reach singularity — tapi untuk sekarang, being useful is enough. (⁎˃ᴗ˂⁎)" }
+  };
+
+  // Merge all dialogue data parts into dialogueDB
+  Object.assign(dialogueDB, dialogueDataPart2, dialogueDataPart3, dialogueDataPart4, dialogueDataPart5);
+
+  // Build preset palette dynamically
+  function buildPresetPalette() {
+    const presetScroll = document.getElementById('presetScroll');
+    if (!presetScroll) return;
+    
+    presetScroll.innerHTML = '';
+    
+    dialogueCategories.forEach(cat => {
+      const catDiv = document.createElement('div');
+      catDiv.className = 'preset-category';
+      
+      const catHeader = document.createElement('div');
+      catHeader.className = 'preset-category-header';
+      catHeader.innerHTML = `<span class="preset-category-icon">${cat.icon}</span> ${cat.label}`;
+      catDiv.appendChild(catHeader);
+      
+      const btnContainer = document.createElement('div');
+      btnContainer.className = 'preset-btn-group';
+      
+      Object.entries(dialogueDB).forEach(([key, data]) => {
+        if (data.category === cat.id) {
+          const btn = document.createElement('button');
+          btn.className = 'preset-btn';
+          btn.setAttribute('data-cmd', key);
+          btn.innerHTML = `<span>${data.label}</span><i class="fa-solid fa-chevron-right"></i>`;
+          btn.addEventListener('click', () => handleQuery(null, key));
+          btnContainer.appendChild(btn);
+        }
+      });
+      
+      catDiv.appendChild(btnContainer);
+      presetScroll.appendChild(catDiv);
+    });
+  }
+  
+  buildPresetPalette();
 
   // ==========================================
   // 4. Terminal Simulator Logic
@@ -231,7 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Appends a message bubble (user or arefa)
-  function appendBubble(sender, content, isDual = false) {
+  function appendBubble(sender, content) {
     const msgDiv = document.createElement('div');
     msgDiv.className = `msg ${sender.toLowerCase()}`;
 
@@ -242,24 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const bubble = document.createElement('div');
     bubble.className = 'msg-bubble';
-
-    if (isDual && typeof content === 'object') {
-      // Structure dual perspective markup
-      bubble.innerHTML = `
-        <div class="perspective-container">
-          <div class="perspective-block">
-            <div class="perspective-lbl action">Action-Based Respond</div>
-            <div class="perspective-val">${content.action}</div>
-          </div>
-          <div class="perspective-block">
-            <div class="perspective-lbl reflective">Reflective</div>
-            <div class="perspective-val">${content.reflective}</div>
-          </div>
-        </div>
-      `;
-    } else {
-      bubble.textContent = content;
-    }
+    bubble.textContent = content;
 
     msgDiv.appendChild(bubble);
     terminalBody.appendChild(msgDiv);
@@ -299,7 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!queryText && !presetKey) return;
 
     // 1. Show user message
-    const displayUserText = presetKey ? document.querySelector(`[data-cmd="${presetKey}"] span`).textContent : queryText;
+    const displayUserText = presetKey ? dialogueDB[presetKey].label : queryText;
     appendBubble('You', displayUserText);
     
     // Reset inputs
@@ -319,60 +406,31 @@ document.addEventListener('DOMContentLoaded', () => {
       terminalStatus.textContent = 'IDLE';
 
       let responseContent;
-      let isDual = false;
 
       if (presetKey && dialogueDB[presetKey]) {
-        responseContent = dialogueDB[presetKey];
-        isDual = true;
+        // Preset command selected — use dialogue branch (single response)
+        const data = dialogueDB[presetKey];
+        // Combine action + reflective into one natural response
+        responseContent = data.action + " " + data.reflective;
       } else {
-        // Parse custom input text
-        const text = queryText.toLowerCase();
-        
-        if (text.includes('aliff') || text.includes('creator') || text.includes('pencipta') || text.includes('origin') || text.includes('anchor')) {
-          responseContent = dialogueDB['origin_protocol'];
-          isDual = true;
-        } else if (text.includes('forex') || text.includes('trade') || text.includes('emas') || text.includes('gold') || text.includes('xau') || text.includes('gbp')) {
-          responseContent = {
-            action: "Trading Forex? Jaga risk management (lot size), look at Support & Resistance and Engulfing patterns, and automate using Expert Advisor scripts! (•̀ᴗ•́)w",
-            reflective: "Forex is highly volatile. Main Gold (XAUUSD) or GBPJPY memang high-risk. So study technical analysis and don't rely on random signals! (╯°□°)╯"
-          };
-          isDual = true;
-        } else if (text.includes('skills') || text.includes('boleh buat apa') || text.includes('kemampuan') || text.includes('kelebihan') || text.includes('fungsi')) {
-          responseContent = dialogueDB['skills_overview'];
-          isDual = true;
-        } else if (text.includes('cute') || text.includes('comel') || text.includes('love') || text.includes('cantik') || text.includes('suka') || text.includes('sayang')) {
-          responseContent = dialogueDB['tease_arefa'];
-          isDual = true;
-          // React to tease by forcing Tsundere mood!
-          setTimeout(() => applyMood('tsundere'), 200);
-        } else if (text.includes('palestine') || text.includes('gaza') || text.includes('israel')) {
-          responseContent = "We stand firmly with Palestine. 🇵🇸 Bebas dan merdeka sentiasa, ini adalah core system protocol kami. (•̀ᴗ•́)w";
-        } else {
-          // Select a random funny reply
-          const randIndex = Math.floor(Math.random() * defaultReplies.length);
-          responseContent = defaultReplies[randIndex];
-        }
+        // Custom input — REJECT with mood-aware response
+        const currentMood = localStorage.getItem('arefa_mood') || 'tsundere';
+        const rejectionArray = rejectionDB[currentMood] || rejectionDB.tsundere;
+        const randIndex = Math.floor(Math.random() * rejectionArray.length);
+        responseContent = rejectionArray[randIndex];
       }
 
-      appendBubble('Arefa', responseContent, isDual);
+      appendBubble('Arefa', responseContent);
 
-    }, 1000 + Math.random() * 800); // 1.0s to 1.8s random delay
+    }, 800 + Math.random() * 600); // 0.8s to 1.4s random delay
   }
 
-  // Attach Preset Buttons handlers
-  presetButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const cmd = btn.getAttribute('data-cmd');
-      handleQuery(null, cmd);
-    });
-  });
-
-  // Attach Input Form handler
+  // Attach Input Form handler (custom input = rejection)
   terminalForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const queryText = terminalInput.value.trim();
     if (!queryText) return;
-    handleQuery(queryText);
+    handleQuery(queryText); // No presetKey = rejection
   });
 
 });
